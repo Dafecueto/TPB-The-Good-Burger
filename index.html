@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    
+    <style>
+        input[type=image] {
+            width: 300px;
+        }
+
+        main {
+            display: flex;
+        }
+
+        .menu {
+            margin-left: 40px;
+        }
+
+        .order {
+            padding-left: 50px;
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        <section class="menu" id="menu">
+            <div id="images-menu">
+                <input type="image" src="src/assets/images/burger-simple.PNG">
+                <input type="image" src="src/assets/images/burger-doble.PNG">
+                <input type="image" src="src/assets/images/chicken.PNG"><br>
+                <input type="image" src="src/assets/images/coca-cola.png">
+                <input type="image" src="src/assets/images/coffee.jpg">
+            </div> 
+
+            <article id="customize">
+                <h3>Customiza tu hamburguesa:</h3>
+                <label for="burger-base">Base</label>
+                <select id="burger-base" name="burger-base">
+                    <option value="Ternera">Ternera</option>
+                    <option value="Pollo">Pollo</option>
+                    <option value="Lentejas">Lentejas</option>
+                </select><br>
+                <label><input type="checkbox" name="ingredient" value="lechuga">Lechuga</label>                <label><input type="checkbox" name="ingredient" value="tomate">Tomate</label>
+                <label><input type="checkbox" name="ingredient" value="queso">Queso</label>
+                <label><input type="checkbox" name="ingredient" value="mayonesa">Mayonesa</label>
+                <label><input type="checkbox" name="ingredient" value="ketchup">Ketchup</label>
+                <input type="submit" id="customize-button" value="+"><br>
+                <input type="submit" id="finish-customize" value="Finalizar">
+                </article>
+            <article id="customized-table">
+                <table></table>
+            </article>
+        </section>
+        <section class="order" id="order">
+            <table id="order-table">
+                <theader>
+                    <th>
+                        <td><h3>Pedido</h3></td>
+                    </th>
+                </theader>
+                <tbody id="order-tbody"></tbody>
+                <tfooter>
+                    <tr>
+                        <td>Precio total:</td>
+                        <td id="total-price"></td>
+                    </tr>
+                </tfooter>
+            </table>
+
+        </section>
+    </main>
+</body>
+</html>
