@@ -31,36 +31,46 @@ class MenuView {
         ]   
     }
 
-    addRowToOrder(name, price) {
+    addQuantityObject (name) {
         const selectedProduct = order.find(product => product.name === name);
-        const htmlOrderTable = order.reduce((table, product) => {
-          if (product.name === selectedProduct.name && product.quantity >= 0 && product.quantity <= 2) {
-            table += `<tr><td>${product.name}</td><td>${product.price}</td>
-                <td>${product.quantity + 1}
-                <td><input type='button' id='remove' name='${name}' value='-' onclick='remove()'></td></tr>`;
-          }
-          return table;
-        }, '');
-        console.log(htmlOrderTable);
-
-        $tableOrder.innerHTML += htmlOrderTable;
+        selectedProduct.quantity < 2 ? selectedProduct.quantity += 1 : selectedProduct.quantity;
       }
+
+    updateOrderTable() {
+        const orderTable = order.reduce(
+          (stringTable, product) => {
+            product.quantity > 0 ? 
+              stringTable += `<tr><td>${product.name}</td><td>${product.price}</td> 
+                <td id=${product.id}>${product.quantity}
+                <td><input type='button' id='remove' name='${name}' value='-' onclick='remove()'></td></tr>`
+                : stringTable;
+                return stringTable;
+          }, "")
+          $tableOrder.innerHTML = orderTable;
+      }
+
+    removeProduct() {
+        const name = event.target.id;
+        console.log(name)
+        const selectedProduct = order.find(product => product.name === name);
+        selectedProduct.quantity--;
+        updateOrderTable();
+        $tableTotalPrice.innerHTML = getTotalPrice();
+      }
+
+      setTotalPrice(totalPrice) {
+          $tableTotalPrice.innerHTML = totalPrice;
+      }
+
 
     
 
-    setQuantity(name) {
-        const selectedProduct = this.order.find(product => product.name === name);
-        selectedProduct.quantity = selectedProduct.quantity + 1;
-        
-    }
 
     bindClickProduct(handler) {
         $images.addEventListener("click", event => {
             const name = event.target.value;
             const price = event.target.dataset.price;
             addRowToOrder(name, price)
-            console.log(tableToObject());
-            console.log($tableOrder)
         })
     }
 }

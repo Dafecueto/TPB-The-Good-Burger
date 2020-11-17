@@ -194,30 +194,56 @@
 
       // PENSAR FUNCIÓN DE SERVICIO (COMPROBAR SI ELEMENTO ESTÁ DENTRO DE LA LISTA)
 
-      //FUNCIÓN DE VISTA
-      function addRowToOrder(name, price) {
+      // FUNCIÓN EDITAR CANTIDAD DEL OBJETO ORDER TRAS PULSAR PRODUCTO
+      function addQuantityObject (name) {
         const selectedProduct = order.find(product => product.name === name);
-        selectedProduct.quantity += 1;
-        console.log(selectedProduct);
-        const htmlOrderTable = order.reduce((table, product) => {
-          if (
-            product.name === selectedProduct.name &&
-            selectedProduct.quantity >= 0 &&
-            selectedProduct.quantity <= 2
-          ) {
-            table += `<tr id='${product.id}'><td>${product.name}</td><td>${product.price}</td>
-                <td>${product.quantity}
-                <td><input type='button' id='remove' name='${name}' value='-' onclick='remove()'></td></tr>`;
-          }
-          return table;
-        }, '');
-
-        $tableOrder.innerHTML += htmlOrderTable;
-        $tableTotalPrice.innerHTML = getTotalPrice(order);
+        selectedProduct.quantity < 2 ? selectedProduct.quantity += 1 : selectedProduct.quantity;
       }
 
+      
+
+      function updateOrderTable() {
+        const orderTable = order.reduce(
+          (stringTable, product) => {
+            product.quantity > 0 ? 
+              stringTable += `<tr><td>${product.name}</td><td>${product.price}</td> 
+                <td>${product.quantity}</td>
+                <td><input type='button' id='${product.name}' class="removeButton" onclick='remove()' value='-'></td></tr>`
+                : stringTable;
+                return stringTable;
+          }, "")
+          $tableOrder.innerHTML = orderTable;
+      }
+
+      function remove() {
+        const name = event.target.id;
+        console.log(name)
+        const selectedProduct = order.find(product => product.name === name);
+        selectedProduct.quantity--;
+        updateOrderTable();
+        $tableTotalPrice.innerHTML = getTotalPrice();
+      }
+
+      function subtractQuantity(name) {
+        const selectedProduct = order.find(product => product.name === name);
+        selectedProduct.quantity = selectedProduct.quantity - 1;
+        updateOrderTable();
+        $tableTotalPrice.innerHTML = getTotalPrice();
+      }
+
+   /*    $tableOrder.addEventListener("click", event => {
+        const name = event.target;
+        subtractQuantity(name)
+      })
+ */
+
+  
+      
+
+
+
       // FUNCIÓN DE SERVICIO
-      function getTotalPrice(order) {
+      function getTotalPrice() {
         const totalprice = order.reduce((totalprice, {price, quantity}) => {
           quantity > 0
             ? (totalprice = totalprice + price * quantity)
@@ -235,13 +261,14 @@
       $images.addEventListener('click', event => {
         const name = event.target.value;
         const price = event.target.dataset.price;
-        addRowToOrder(name, price);
+        addQuantityObject(name);
+        updateOrderTable();
+        $tableTotalPrice.innerHTML= getTotalPrice();
+  
         console.log($tableOrder);
       });
 
-      function remove() {
-        console.log(event.target.name);
-      }
+  
     </script>
   </body>
 </html>
