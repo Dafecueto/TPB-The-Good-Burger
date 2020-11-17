@@ -6,7 +6,7 @@ class MenuView {
             {
                 name: "Burger Simple",
                 price : 4,
-                quantity = 0
+                quantity:  0
             },
             {
                 name: "Burger Doble",
@@ -36,7 +36,7 @@ class MenuView {
         selectedProduct.quantity < 2 ? selectedProduct.quantity += 1 : selectedProduct.quantity;
       }
 
-    updateOrderTable() {
+    updateOrderTable(order) {
         const orderTable = order.reduce(
           (stringTable, product) => {
             product.quantity > 0 ? 
@@ -47,6 +47,17 @@ class MenuView {
                 return stringTable;
           }, "")
           $tableOrder.innerHTML = orderTable;
+      }
+
+      updateOrderTableView(order) {
+        const orderTable = order.reduce(
+            (stringTable, product) => {
+                stringTable += `<tr><td>${product.name}</td><td>${product.price}</td> 
+                  <td id=${product.id}>${product.quantity}
+                  <td><input type='button' id='remove' name='${name}' value='-' onclick='remove()'></td></tr>`
+                  return stringTable;
+            }, "")
+            $tableOrder.innerHTML = orderTable;
       }
 
     removeProduct() {
@@ -69,8 +80,7 @@ class MenuView {
     bindClickProduct(handler) {
         $images.addEventListener("click", event => {
             const name = event.target.value;
-            const price = event.target.dataset.price;
-            addRowToOrder(name, price)
+            handler(name);
         })
     }
 }

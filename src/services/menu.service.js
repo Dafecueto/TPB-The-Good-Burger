@@ -41,8 +41,12 @@ class MenuService {
         }
 
 
-    reduceOrderByQuantity() { return this.order.filter(product => product.quantity > 0);
-    }    
+    reduceOrderByQuantity() { return this.order.filter(product => product.quantity > 0);}    
+
+    addQuantityProductOrder(name) {
+        const selectedProduct = order.find(product => product.name === name);
+        selectedProduct.quantity < 2 ? selectedProduct.quantity += 1 : selectedProduct.quantity;
+    }
 
  }
 
