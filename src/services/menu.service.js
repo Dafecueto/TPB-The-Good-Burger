@@ -32,9 +32,9 @@ class MenuService {
 
 
     getTotalPrice(orderObject) {
-        const totalprice = order.reduce(
-            (totalprice, {quantity}) => {
-               totalprice = totalprice + price
+        const totalprice = this.order.reduce(
+            (totalprice, {price, quantity}) => {
+               totalprice = totalprice + price*quantity;
                return totalprice
             }, 0);
             return totalprice;
@@ -44,9 +44,16 @@ class MenuService {
     reduceOrderByQuantity() { return this.order.filter(product => product.quantity > 0);}    
 
     addQuantityProductOrder(name) {
-        const selectedProduct = order.find(product => product.name === name);
+        const selectedProduct = this.findProduct(name);
         selectedProduct.quantity < 2 ? selectedProduct.quantity += 1 : selectedProduct.quantity;
     }
+
+    subtractQuantityProductOrder(name) {
+        const selectedProduct = this.findProduct(name);
+        selectedProduct.quantity > 0 ? selectedProduct.quantity-- : selectedProduct.quantity;
+    }
+
+    findProduct(name) { return this.order.find(product => product.name === name);}
 
  }
 

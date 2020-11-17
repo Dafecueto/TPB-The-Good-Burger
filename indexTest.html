@@ -154,10 +154,121 @@
       </section>
     </main>
 
-    <script src="./src/views/menu.view.js"></script>
-    <script src="./src/models/Order.js"></script>
-    <script src="./src/services/menu.service.js"></script>
-    <script src="./src/controllers/menu.controller.js"></script>
-    <script src="../app.js"></script>
+    <script>
+      const $images = document.getElementById('images-menu');
+      const $tableOrder = document.getElementById('order-tbody');
+      const $tableTotalPrice = document.getElementById('total-price');
+
+      const order = [
+        {
+          id: 1,
+          name: 'Burger Simple',
+          price: 4,
+          quantity: 0,
+        },
+        {
+          id: 2,
+          name: 'Burger Doble',
+          price: 5,
+          quantity: 0,
+        },
+        {
+          id: 3,
+          name: 'Chicken Burger',
+          price: 4,
+          quantity: 0,
+        },
+        {
+          id: 4,
+          name: 'Coca Cola',
+          price: 2,
+          quantity: 0,
+        },
+        {
+          id: 5,
+          name: 'Café',
+          price: 1,
+          quantity: 0,
+        },
+      ];
+
+      // PENSAR FUNCIÓN DE SERVICIO (COMPROBAR SI ELEMENTO ESTÁ DENTRO DE LA LISTA)
+
+      // FUNCIÓN EDITAR CANTIDAD DEL OBJETO ORDER TRAS PULSAR PRODUCTO
+      function addQuantityObject (name) {
+        const selectedProduct = order.find(product => product.name === name);
+        selectedProduct.quantity < 2 ? selectedProduct.quantity += 1 : selectedProduct.quantity;
+      }
+
+      
+
+      function updateOrderTable() {
+        const orderTable = order.reduce(
+          (stringTable, product) => {
+            product.quantity > 0 ? 
+              stringTable += `<tr><td>${product.name}</td><td>${product.price}</td> 
+                <td>${product.quantity}</td>
+                <td><input type='button' id='${product.name}' class="removeButton" onclick='remove()' value='-'></td></tr>`
+                : stringTable;
+                return stringTable;
+          }, "")
+          $tableOrder.innerHTML = orderTable;
+      }
+
+      function remove() {
+        const name = event.target.id;
+        console.log(name);
+        const selectedProduct = order.find(product => product.name === name);
+        selectedProduct.quantity--;
+        updateOrderTable();
+        $tableTotalPrice.innerHTML = getTotalPrice();
+      }
+
+      function subtractQuantity(name) {
+        const selectedProduct = order.find(product => product.name === name);
+        selectedProduct.quantity = selectedProduct.quantity - 1;
+        updateOrderTable();
+        $tableTotalPrice.innerHTML = getTotalPrice();
+      }
+
+   /*    $tableOrder.addEventListener("click", event => {
+        const name = event.target;
+        subtractQuantity(name)
+      })
+ */
+
+  
+      
+
+
+
+      // FUNCIÓN DE SERVICIO
+      function getTotalPrice() {
+        const totalprice = order.reduce((totalprice, {price, quantity}) => {
+          quantity > 0
+            ? (totalprice = totalprice + price * quantity)
+            : totalprice;
+          return totalprice;
+        }, 0);
+        return totalprice;
+      }
+
+      function setQuantity(name) {
+        const selectedProduct = order.find(product => product.name === name);
+        selectedProduct.quantity = selectedProduct.quantity + 1;
+      }
+
+      $images.addEventListener('click', event => {
+        const name = event.target.value;
+        const price = event.target.dataset.price;
+        addQuantityObject(name);
+        updateOrderTable();
+        $tableTotalPrice.innerHTML= getTotalPrice();
+  
+        console.log($tableOrder);
+      });
+
+  
+    </script>
   </body>
 </html>

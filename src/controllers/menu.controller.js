@@ -4,6 +4,7 @@ class Controller {
         this.menuView = menuView;
 
         menuView.bindClickProduct(this.updateOrderTable);
+        menuView.bindRemoveClick(this.removeProduct);
     }
 
 
@@ -11,6 +12,12 @@ class Controller {
 
     updateOrderTable = (name) => {
         this.menuService.addQuantityProductOrder(name)
+        this.menuView.updateOrderTableView(this.menuService.reduceOrderByQuantity());
+        this.menuView.setTotalPrice(this.menuService.getTotalPrice())
+    }
+
+    removeProduct = (name) => {
+        this.menuService.subtractQuantityProductOrder(name);
         this.menuView.updateOrderTableView(this.menuService.reduceOrderByQuantity());
         this.menuView.setTotalPrice(this.menuService.getTotalPrice())
     }
