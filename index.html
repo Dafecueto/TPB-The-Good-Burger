@@ -1,130 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    
-    
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
     <style>
-        input[type=image] {
-            width: 300px;
-        }
+      input[type='image'] {
+        width: 300px;
+      }
 
-        main {
-            display: flex;
-        }
+      main {
+        display: flex;
+      }
 
-        .menu {
-            margin-left: 40px;
-        }
+      .menu {
+        margin-left: 40px;
+      }
 
-        .order {
-            padding-left: 50px;
-        }
+      .order {
+        padding-left: 50px;
+      }
 
-        td {
-            text-align: center;
-        }
-
+      td {
+        text-align: center;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <main>
-        <section class="menu" id="menu">
-            <div id="images-menu">
-                <input type="image" value="Burger Simple" data-price="4" src="src/assets/images/burger-simple.PNG">
-                <input type="image" value="Burger Doble" data-price="5" src="src/assets/images/burger-doble.PNG">
-                <input type="image" value="Chicken Burger" data-price="4" src="src/assets/images/chicken.PNG"><br>
-                <input type="image" value="Coca Cola" data-price="2" src="src/assets/images/coca-cola.png">
-                <input type="image" value="Café" data-price="1" src="src/assets/images/coffee.jpg">
-            </div> 
+      <section class="menu" id="menu">
+        <div id="images-menu">
+          <input
+            type="image"
+            value="Burger Simple"
+            data-price="4"
+            src="src/assets/images/burger-simple.PNG"
+          />
+          <input
+            type="image"
+            value="Burger Doble"
+            data-price="5"
+            src="src/assets/images/burger-doble.PNG"
+          />
+          <input
+            type="image"
+            value="Chicken Burger"
+            data-price="4"
+            src="src/assets/images/chicken.PNG"
+          /><br />
+          <input
+            type="image"
+            value="Coca Cola"
+            data-price="2"
+            src="src/assets/images/coca-cola.png"
+          />
+          <input
+            type="image"
+            value="Café"
+            data-price="1"
+            src="src/assets/images/coffee.jpg"
+          />
+        </div>
 
-            <article id="customize">
-                <h3>Customiza tu hamburguesa:</h3>
-                <label for="burger-base">Base</label>
-                <select id="burger-base" name="burger-base">
-                    <option value="Ternera">Ternera</option>
-                    <option value="Pollo">Pollo</option>
-                    <option value="Lentejas">Lentejas</option>
-                </select><br>
-                <label><input type="checkbox" name="ingredient" value="lechuga">Lechuga</label>                <label><input type="checkbox" name="ingredient" value="tomate">Tomate</label>
-                <label><input type="checkbox" name="ingredient" value="queso">Queso</label>
-                <label><input type="checkbox" name="ingredient" value="mayonesa">Mayonesa</label>
-                <label><input type="checkbox" name="ingredient" value="ketchup">Ketchup</label>
-                <input type="submit" id="customize-button" value="+"><br>
-                <input type="submit" id="finish-customize" value="Finalizar">
-                </article>
-            <article id="customized-table">
-                <table></table>
-            </article>
-        </section>
-        <section class="order" id="order">
-            <table id="order-table">
-                <theader>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Precio</th>
-                        <th>Cantidad</th>
-                    </tr>
-                </theader>
-                <tbody id="order-tbody"></tbody>
-                <tfooter>
-                    <tr>
-                        <td>Precio total:</td>
-                        <td id="total-price"></td>
-                    </tr>
-                </tfooter>
-            </table>
-
-        </section>
+        <article id="customize">
+          <h3>Customiza tu hamburguesa:</h3>
+          <label for="burger-base">Base</label>
+          <select id="burger-base" name="burger-base">
+            <option value="Ternera">Ternera</option>
+            <option value="Pollo">Pollo</option>
+            <option value="Lentejas">Lentejas</option></select
+          ><br />
+          <label
+            ><input
+              type="checkbox"
+              name="ingredient"
+              value="lechuga"
+            />Lechuga</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              name="ingredient"
+              value="tomate"
+            />Tomate</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              name="ingredient"
+              value="queso"
+            />Queso</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              name="ingredient"
+              value="mayonesa"
+            />Mayonesa</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              name="ingredient"
+              value="ketchup"
+            />Ketchup</label
+          >
+          <input type="submit" id="customize-button" value="+" /><br />
+          <input type="submit" id="finish-customize" value="Finalizar" />
+        </article>
+        <article id="customized-table">
+          <table></table>
+        </article>
+      </section>
+      <section class="order" id="order">
+        <table id="order-table">
+          <theader>
+            <tr>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+            </tr>
+          </theader>
+          <tbody id="order-tbody"></tbody>
+          <tfooter>
+            <tr>
+              <td>Precio total:</td>
+              <td id="total-price"></td>
+            </tr>
+          </tfooter>
+        </table>
+      </section>
     </main>
 
-
     <script>
+      const $images = document.getElementById('images-menu');
+      const $tableOrder = document.getElementById('order-tbody');
+      const $tableTotalPrice = document.getElementById('total-price');
 
-        const $images = document.getElementById("images-menu");
-        const $tableOrder = document.getElementById("order-tbody");
+      const order = [
+        {
+          id: 1,
+          name: 'Burger Simple',
+          price: 4,
+          quantity: 0,
+        },
+        {
+          id: 2,
+          name: 'Burger Doble',
+          price: 5,
+          quantity: 0,
+        },
+        {
+          id: 3,
+          name: 'Chicken Burger',
+          price: 4,
+          quantity: 0,
+        },
+        {
+          id: 4,
+          name: 'Coca Cola',
+          price: 2,
+          quantity: 0,
+        },
+        {
+          id: 5,
+          name: 'Café',
+          price: 1,
+          quantity: 0,
+        },
+      ];
 
-        function addRowToOrder(name, price) {
-            const tableRow = $tableOrder.insertRow(0);
-            tableRow.setAttribute("id", name);
-            tableRow.insertCell(0).textContent = name
-            tableRow.insertCell(1).textContent = price
-            tableRow.insertCell(2).textContent = 1;
-            tableRow.insertCell(3).innerHTML = `<input type='button' id='remove' name='${name}' value='-' onclick='remove()'>`;
-    }
+      // PENSAR FUNCIÓN DE SERVICIO (COMPROBAR SI ELEMENTO ESTÁ DENTRO DE LA LISTA)
 
-    $images.addEventListener("click", event => {
+      //FUNCIÓN DE VISTA
+      function addRowToOrder(name, price) {
+        const selectedProduct = order.find(product => product.name === name);
+        selectedProduct.quantity += 1;
+        console.log(selectedProduct);
+        const htmlOrderTable = order.reduce((table, product) => {
+          if (
+            product.name === selectedProduct.name &&
+            selectedProduct.quantity >= 0 &&
+            selectedProduct.quantity <= 2
+          ) {
+            table += `<tr id='${product.id}'><td>${product.name}</td><td>${product.price}</td>
+                <td>${product.quantity}
+                <td><input type='button' id='remove' name='${name}' value='-' onclick='remove()'></td></tr>`;
+          }
+          return table;
+        }, '');
+
+        $tableOrder.innerHTML += htmlOrderTable;
+        $tableTotalPrice.innerHTML = getTotalPrice(order);
+      }
+
+      // FUNCIÓN DE SERVICIO
+      function getTotalPrice(order) {
+        const totalprice = order.reduce((totalprice, {price, quantity}) => {
+          quantity > 0
+            ? (totalprice = totalprice + price * quantity)
+            : totalprice;
+          return totalprice;
+        }, 0);
+        return totalprice;
+      }
+
+      function setQuantity(name) {
+        const selectedProduct = order.find(product => product.name === name);
+        selectedProduct.quantity = selectedProduct.quantity + 1;
+      }
+
+      $images.addEventListener('click', event => {
         const name = event.target.value;
         const price = event.target.dataset.price;
-        addRowToOrder(name, price)
-        console.log(tableToObject());
-        console.log($tableOrder)
-    })
+        addRowToOrder(name, price);
+        console.log($tableOrder);
+      });
 
-    function tableToObject() {
-            const tbl = $('#order-tbody tr:has(td)').map(function(i, v) {
-            const $td =  $('td', this);
-                return {
-                        name: $td.eq(0).text(),
-                        age: $td.eq(1).text(),
-                        grade: $td.eq(2).text()               
-                    }
-            }).get()
-        }
-console.log(tbl)
-
-    function remove() {
+      function remove() {
         console.log(event.target.name);
-    }
-
-
-
+      }
     </script>
-</body>
+  </body>
 </html>
