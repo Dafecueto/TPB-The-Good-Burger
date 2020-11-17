@@ -2,11 +2,18 @@ const order = [
   {
     name: 'Burger Simple',
     price: 4,
+    quantity: 1,
   },
   {
     name: 'Chicken Burger',
     price: 4,
+    quantity: 0,
   },
+  {
+    name: "Coca Cola",
+    price: 2,
+    quantity: 1,
+  }
 ];
 
 /* const totalprice = order.reduce(
