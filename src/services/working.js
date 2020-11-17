@@ -11,10 +11,6 @@ const order =
 ]
 
 const totalprice = order.reduce(
-    (totalprice, {price}) => {
-       //totalprice = totalprice + Number(price);
-       totalprice = totalprice + price
-       return totalprice
-    }, 0);
+    (totalprice, {price}) =>  totalprice += price, 0);
 
     console.log(totalprice)
