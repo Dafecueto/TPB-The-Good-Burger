@@ -1,6 +1,7 @@
 class MenuService {
     constructor() {
         this.customizedBurger;
+        this.priceAcummulator = 0;
         this.order = [
             {
                 name: "Burger Simple",
@@ -80,6 +81,7 @@ class MenuService {
             this.addQuantityIngredient(ingredient);
         }
         this.customizedBurger.setIngredients(this.reduceIngredientsByQuantity())
+        this.accumulatorBasePrice += this.customizedBurger.baseprice;
     }
 
     addIngredientToOrder(ingredients) {
@@ -108,7 +110,20 @@ class MenuService {
                 return totalprice
             }, 0
         );
-        return totalprice;
+        return totalprice + this.customizedBurger.baseprice;
+    }
+
+    saveCustomizedPrice() {
+       this.priceAcummulator += this.getTotalCustomizedPrice();
+    }
+
+    getTotalTotal() {
+        const pricemenu = this.getTotalPrice();
+        return this.priceAcummulator + pricemenu;
+    }
+
+    isThereBurgerCreated(){
+        return this.customizedBurger.baseprice == undefined ? false : true
     }
 
     addQuantityIngredient(name) {
@@ -128,6 +143,23 @@ class MenuService {
     subtractQuantityProductOrder(name) {
         const selectedProduct = this.findProduct(name);
         selectedProduct.quantity > 0 ? selectedProduct.quantity-- : selectedProduct.quantity;
+    }
+
+    resetIngredients() {
+        this.ingredientsMenu = Object.values(this.ingredientsMenu).reduce(
+            (reset, ingred) => {
+            const ingredient = 
+            {name: ingred.name,
+            price: ingred.price,
+            quantity: 0}
+            reset.push(ingredient)
+            return reset;
+        }, []);    
+        this.customizedBurger.baseprice = 0;     
+    }
+
+    getIngredients() {
+        return this.ingredientsMenu;
     }
 
     findProduct(name) { return this.order.find(product => product.name === name);}

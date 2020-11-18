@@ -7,13 +7,14 @@ class Controller {
         menuView.bindRemoveClick(this.removeProduct);
         menuView.bindCustomizeButton(this.updateCustomizedTable);
         menuView.bindRemoveIngredientClick(this.removeIngredient);
+        menuView.bindFinishCustomize(this.finishCustomizedBurger)
     }
 
 
     updateOrderTable = (name) => {
         this.menuService.addQuantityProductOrder(name)
         this.menuView.updateOrderTableView(this.menuService.reduceOrderByQuantity());
-        this.menuView.setTotalPrice(this.menuService.getTotalPrice())
+        this.menuView.setTotalPrice(this.menuService.getTotalTotal())
     }
 
     updateCustomizedTable = (base, ingredients) => {
@@ -22,12 +23,20 @@ class Controller {
         this.menuView.setCustomizedPrice(this.menuService.getTotalCustomizedPrice());
     }
 
+    finishCustomizedBurger = () => {
+        this.menuView.addCustomizedBurgerToTable(this.menuService.getTotalCustomizedPrice());
+        this.menuService.saveCustomizedPrice();
+        this.menuView.setTotalPrice(this.menuService.getTotalTotal())
+        this.menuService.resetIngredients();
+        this.menuView.resetTable();
+    }
+
     removeProduct = (name) => {
         try{
         this.menuService.subtractQuantityProductOrder(name);
         } catch(exception) {}
         this.menuView.updateOrderTableView(this.menuService.reduceOrderByQuantity());
-        this.menuView.setTotalPrice(this.menuService.getTotalPrice())
+        this.menuView.setTotalPrice(this.menuService.getTotalTotal())
     }
 
     removeIngredient = (name) => {

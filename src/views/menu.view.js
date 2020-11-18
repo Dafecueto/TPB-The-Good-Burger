@@ -2,14 +2,15 @@ class MenuView {
     constructor () {
         this.$images = document.getElementById("images-menu");
         this.$tableOrder = document.getElementById("order-tbody");
+        this.$secondaryTbody = document.getElementById("custom-tbody")
         this.$tableCustomized = document.getElementById("customized-tbody");
         this.$tableTotalPrice = document.getElementById("total-price");
         this.$tableCustomizedTotalPrice = document.getElementById("customized-price");
         this.$customizeButton = document.getElementById("customize-button");
         this.$addCustomizeBurger = document.getElementById("finish-customize");
         this.$baseOfBurger = document.getElementById("burger-base");
+        this.$finishCustomize = document.getElementById("finish-customize");
 
-    
     }
 
       updateOrderTableView(order) {
@@ -22,6 +23,7 @@ class MenuView {
             }, "")
             this.$tableOrder.innerHTML = orderTable;
       }
+
 
       updateCustomizedTableView(burger, ingredients) {
             const burgerBase = `<tr><td><strong>${burger.base}</strong></td><td>${burger.baseprice}</td>`;
@@ -38,6 +40,10 @@ class MenuView {
             this.$tableCustomized.innerHTML = burgerBase+ingredientsTable;
         }
 
+        addCustomizedBurgerToTable(price) {
+            this.$secondaryTbody.innerHTML += `<tr><td>Burger Customizada</td><td>${price}</td><td>1</td>`
+        }
+
  
 
       setTotalPrice(totalPrice) {
@@ -46,6 +52,11 @@ class MenuView {
 
       setCustomizedPrice(totalPrice) {
           this.$tableCustomizedTotalPrice.innerHTML = totalPrice;
+      }
+
+      resetTable() {
+          this.$tableCustomized.innerHTML = "";
+          this.$tableCustomizedTotalPrice.innerHTML = 0;
       }
 
 
@@ -80,6 +91,12 @@ class MenuView {
               ingredients.push(ingredient.value);
             }
             handler(this.$baseOfBurger.value, ingredients);
+        })
+    }
+
+    bindFinishCustomize(handler) {
+        this.$finishCustomize.addEventListener("click", event => {
+            handler();
         })
     }
 
