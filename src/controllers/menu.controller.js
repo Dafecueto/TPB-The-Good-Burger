@@ -35,6 +35,7 @@ class Controller {
         try{
         this.menuService.subtractQuantityProductOrder(name);
         } catch(exception) {}
+        console.log(name)
         this.menuView.updateOrderTableView(this.menuService.reduceOrderByQuantity());
         this.menuView.setTotalPrice(this.menuService.getTotalTotal())
     }

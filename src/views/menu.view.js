@@ -10,6 +10,7 @@ class MenuView {
         this.$addCustomizeBurger = document.getElementById("finish-customize");
         this.$baseOfBurger = document.getElementById("burger-base");
         this.$finishCustomize = document.getElementById("finish-customize");
+        this.incrementalID = 1;
 
     }
 
@@ -41,7 +42,9 @@ class MenuView {
         }
 
         addCustomizedBurgerToTable(price) {
-            this.$secondaryTbody.innerHTML += `<tr><td>Burger Customizada</td><td>${price}</td><td>1</td>`
+            this.$secondaryTbody.innerHTML += `<tr><td>Burger Customizada ${this.incrementalID}</td><td>${price}</td><td>1</td>
+            <td><input type='button' id=${price}' value='-'></td></tr>`
+            this.incrementalID++;
         }
 
  
