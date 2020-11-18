@@ -1,6 +1,11 @@
 class Burger {
-    constructor(name, price) {
-        this.name = name;
-        this.price = price;
+    constructor(base) {
+        this.base = base;
+        this.baseprice = 2;
+        this.ingredients = {}
+    }
+
+    setIngredients(orderIngredients) {
+        this.ingredients = orderIngredients
     }
 }

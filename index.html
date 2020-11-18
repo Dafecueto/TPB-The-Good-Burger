@@ -31,11 +31,9 @@
         width: 300px;
       }
 
-      main {
-        display: flex;
-      }
 
       .menu {
+        display: flex;
         margin-left: 40px;
       }
 
@@ -46,11 +44,21 @@
       td {
         text-align: center;
       }
+
+      .customize {
+        display: flex;
+      }
+
+      .customized-table {
+        margin-left: 250px;
+      }
+
     </style>
   </head>
   <body>
     <main>
       <section class="menu" id="menu">
+        <article>
         <div id="images-menu">
           <input
             type="image"
@@ -83,77 +91,102 @@
             src="src/assets/images/coffee.jpg"
           />
         </div>
-
+      </article>
+        <article class="order" id="order">
+          <table id="order-table">
+            <theader>
+              <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+              </tr>
+            </theader>
+            <tbody id="order-tbody"></tbody>
+            <tfooter>
+              <tr>
+                <td>Precio total:</td>
+                <td id="total-price"></td>
+              </tr>
+            </tfooter>
+          </table>
+        </article>
+      </section>
+        <section class="customize">
         <article id="customize">
           <h3>Customiza tu hamburguesa:</h3>
           <label for="burger-base">Base</label>
           <select id="burger-base" name="burger-base">
-            <option value="Ternera">Ternera</option>
-            <option value="Pollo">Pollo</option>
-            <option value="Lentejas">Lentejas</option></select
+            <option value="Ternera" data-price="2">Ternera</option>
+            <option value="Pollo" data-price="2">Pollo</option>
+            <option value="Lentejas" data-price="2.5">Lentejas</option></select
           ><br />
+          <div id="ingredients">
           <label
             ><input
               type="checkbox"
               name="ingredient"
-              value="lechuga"
+              value="Lechuga"
             />Lechuga</label
           >
           <label
             ><input
               type="checkbox"
               name="ingredient"
-              value="tomate"
+              value="Tomate"
             />Tomate</label
           >
           <label
             ><input
               type="checkbox"
               name="ingredient"
-              value="queso"
+              value="Queso"
             />Queso</label
           >
           <label
             ><input
               type="checkbox"
               name="ingredient"
-              value="mayonesa"
+              value="Mayonesa"
             />Mayonesa</label
           >
           <label
             ><input
               type="checkbox"
               name="ingredient"
-              value="ketchup"
+              value="Ketchup"
             />Ketchup</label
           >
+        </div>
           <input type="submit" id="customize-button" value="+" /><br />
-          <input type="submit" id="finish-customize" value="Finalizar" />
         </article>
         <article id="customized-table">
-          <table></table>
+          <table class="customized-table">
+            <theader>
+              <tr>
+                <th>Ingrediente</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+              </tr>
+              </tr>
+            </theader>
+            <tbody id="customized-tbody">
+            </tbody>
+            <tfooter>
+              <tr>
+                <td>Precio total:</td>
+                <td id="customized-price"></td>
+                </td>
+                <tr>
+                  <td><input type="submit" id="finish-customize" value="Incluir" />
+                </tr>
+              </tr>
+            </tfooter>
+          </table>
         </article>
-      </section>
-      <section class="order" id="order">
-        <table id="order-table">
-          <theader>
-            <tr>
-              <th>Nombre</th>
-              <th>Precio</th>
-              <th>Cantidad</th>
-            </tr>
-          </theader>
-          <tbody id="order-tbody"></tbody>
-          <tfooter>
-            <tr>
-              <td>Precio total:</td>
-              <td id="total-price"></td>
-            </tr>
-          </tfooter>
-        </table>
       </section>
     </main>
 
+    <script src="./src/models/Burger.js"></script>
     <script src="./src/views/menu.view.js"></script>
     <script src="./src/models/Order.js"></script>
     <script src="./src/services/menu.service.js"></script>
