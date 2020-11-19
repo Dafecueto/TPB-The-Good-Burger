@@ -14,7 +14,7 @@ class Controller {
     updateOrderTable = (name) => {
         this.menuService.addQuantityProductOrder(name)
         this.menuView.updateOrderTableView(this.menuService.reduceOrderByQuantity());
-        this.menuView.setTotalPrice(this.menuService.getTotalTotal())
+        this.menuView.setTotalPrice(this.menuService.getTotalPrice())
     }
 
     updateCustomizedTable = (base, ingredients) => {
@@ -24,9 +24,10 @@ class Controller {
     }
 
     finishCustomizedBurger = () => {
-        this.menuView.addCustomizedBurgerToTable(this.menuService.getTotalCustomizedPrice());
-        this.menuService.saveCustomizedPrice();
-        this.menuView.setTotalPrice(this.menuService.getTotalTotal())
+        this.menuService.addCustomBurger();
+        console.log(this.menuService.getOrder())
+        this.menuView.updateOrderTableView(this.menuService.reduceOrderByQuantity());
+        this.menuView.setTotalPrice(this.menuService.getTotalPrice())
         this.menuService.resetIngredients();
         this.menuView.resetTable();
     }

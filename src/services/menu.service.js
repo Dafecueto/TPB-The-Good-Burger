@@ -2,6 +2,7 @@ class MenuService {
     constructor() {
         this.customizedBurger;
         this.priceAcummulator = 0;
+        this.incrementalCustomNumber = 1;
         this.order = [
             {
                 name: "Burger Simple",
@@ -74,6 +75,16 @@ class MenuService {
         ]
     }
     
+    addCustomBurger() {
+        this.order.push(
+            {
+                name: `CustomBurger ${this.incrementalCustomNumber}`,
+                price: this.getTotalCustomizedPrice(),
+                quantity: 1
+            }
+        )
+        this.incrementalCustomNumber++;
+    }
 
     createBurger(baseOfBurger, ingredients) {
         this.customizedBurger = new Burger(baseOfBurger);
@@ -160,6 +171,10 @@ class MenuService {
 
     getIngredients() {
         return this.ingredientsMenu;
+    }
+
+    getOrder() {
+        return this.order;
     }
 
     findProduct(name) { return this.order.find(product => product.name === name);}

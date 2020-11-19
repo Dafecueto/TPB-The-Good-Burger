@@ -67,9 +67,16 @@ class MenuView {
        bindRemoveClick(handler) {
            this.$tableOrder.addEventListener("click", event => {
                const name = event.target.id;
-               handler(name)
+               handler(name);
            })
         } 
+
+        bindRemoveCustomized(handler) {
+            this.$secondaryTbody.addEventListener("click", event => {
+                const price = event.target.id;
+                handler(price);
+            })
+        }
 
         bindRemoveIngredientClick(handler) {
             this.$tableCustomized.addEventListener("click", event => {
