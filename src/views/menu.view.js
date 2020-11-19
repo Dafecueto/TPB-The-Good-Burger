@@ -41,14 +41,6 @@ class MenuView {
             this.$tableCustomized.innerHTML = burgerBase+ingredientsTable;
         }
 
-        addCustomizedBurgerToTable(price) {
-            this.$secondaryTbody.innerHTML += `<tr><td>Burger Customizada ${this.incrementalID}</td><td>${price}</td><td>1</td>
-            <td><input type='button' id=${price}' value='-'></td></tr>`
-            this.incrementalID++;
-        }
-
- 
-
       setTotalPrice(totalPrice) {
           this.$tableTotalPrice.innerHTML = totalPrice;
       }

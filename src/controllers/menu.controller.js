@@ -24,10 +24,13 @@ class Controller {
     }
 
     finishCustomizedBurger = () => {
+        //this.menuView.addCustomizedBurgerToTable(this.menuService.getTotalCustomizedPrice());
+        //this.menuService.saveCustomizedPrice();
         this.menuService.addCustomBurger();
         console.log(this.menuService.getOrder())
         this.menuView.updateOrderTableView(this.menuService.reduceOrderByQuantity());
         this.menuView.setTotalPrice(this.menuService.getTotalPrice())
+        //this.menuView.setTotalPrice(this.menuService.getTotalTotal())
         this.menuService.resetIngredients();
         this.menuView.resetTable();
     }
@@ -38,7 +41,7 @@ class Controller {
         } catch(exception) {}
         console.log(name)
         this.menuView.updateOrderTableView(this.menuService.reduceOrderByQuantity());
-        this.menuView.setTotalPrice(this.menuService.getTotalTotal())
+        this.menuView.setTotalPrice(this.menuService.getTotalPrice())
     }
 
     removeIngredient = (name) => {

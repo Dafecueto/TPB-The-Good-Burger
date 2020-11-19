@@ -83,7 +83,7 @@ class MenuService {
                 quantity: 1
             }
         )
-        this.incrementalCustomNumber++;
+        this.incrementalCustomNumber++
     }
 
     createBurger(baseOfBurger, ingredients) {
@@ -124,18 +124,6 @@ class MenuService {
         return totalprice + this.customizedBurger.baseprice;
     }
 
-    saveCustomizedPrice() {
-       this.priceAcummulator += this.getTotalCustomizedPrice();
-    }
-
-    getTotalTotal() {
-        const pricemenu = this.getTotalPrice();
-        return this.priceAcummulator + pricemenu;
-    }
-
-    isThereBurgerCreated(){
-        return this.customizedBurger.baseprice == undefined ? false : true
-    }
 
     addQuantityIngredient(name) {
         const selectedIngredient = this.findIngredient(name);
