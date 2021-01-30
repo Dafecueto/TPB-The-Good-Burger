@@ -51,4 +51,5 @@ class Controller {
         this.menuView.updateCustomizedTableView(this.menuService.getBurger(), this.menuService.reduceIngredientsByQuantity());
         this.menuView.setCustomizedPrice(this.menuService.getTotalCustomizedPrice());
     }
+    
 }
